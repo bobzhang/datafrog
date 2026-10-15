@@ -1,0 +1,5 @@
+import {
+  "bobzhang/datafrog",
+}
+
+pkgtype(kind: "executable")
