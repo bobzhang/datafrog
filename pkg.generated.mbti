@@ -1,0 +1,67 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "bobzhang/datafrog"
+
+// Values
+
+// Errors
+
+// Types and methods
+pub struct Iteration {
+  // private fields
+}
+pub fn Iteration::Iteration() -> Self
+pub fn Iteration::changed(Self) -> Bool
+pub fn Iteration::dispose(Self) -> Unit
+pub fn Iteration::round(Self) -> Int
+pub fn Iteration::stats(Self) -> Array[VariableStats]
+pub fn[T : Compare] Iteration::variable(Self, String, distinct? : Bool) -> Variable[T]
+
+pub(all) enum JoinInput[T] {
+  Dynamic(Variable[T])
+  Static(Relation[T])
+}
+
+pub struct Relation[T] {
+  // private fields
+}
+pub fn[T : Compare] Relation::Relation(Array[T]) -> Self[T]
+pub fn[T] Relation::as_input(Self[T]) -> JoinInput[T]
+pub fn[T : Compare] Relation::contains(Self[T], T) -> Bool
+pub fn[K : Compare, A, C : Compare] Relation::from_antijoin(Self[(K, A)], Self[K], (K, A) -> C) -> Self[C]
+pub fn[K : Compare, A, B, C : Compare] Relation::from_join(Self[(K, A)], Self[(K, B)], (K, A, B) -> C) -> Self[C]
+pub fn[K : Compare, A, B, C : Compare] Relation::from_join_filtered(Self[(K, A)], Self[(K, B)], (K, A, B) -> C?) -> Self[C]
+pub fn[A, B : Compare] Relation::from_map(Self[A], (A) -> B) -> Self[B]
+pub fn[A, B : Compare] Relation::from_map_filtered(Self[A], (A) -> B?) -> Self[B]
+pub fn[T] Relation::is_empty(Self[T]) -> Bool
+pub fn[T] Relation::length(Self[T]) -> Int
+pub fn[T : Compare] Relation::merge(Self[T], Self[T]) -> Self[T]
+pub fn[T] Relation::to_array(Self[T]) -> Array[T]
+
+pub struct Variable[T] {
+  // private fields
+}
+pub fn[T] Variable::as_input(Self[T]) -> JoinInput[T]
+pub fn[T : Compare] Variable::complete(Self[T]) -> Relation[T]
+pub fn[K : Compare, A, C : Compare] Variable::from_antijoin(Self[C], Self[(K, A)], Relation[K], (K, A) -> C) -> Unit
+pub fn[K : Compare, A, B, C : Compare] Variable::from_join(Self[C], Self[(K, A)], JoinInput[(K, B)], (K, A, B) -> C) -> Unit
+pub fn[K : Compare, A, B, C : Compare] Variable::from_join_filtered(Self[C], Self[(K, A)], JoinInput[(K, B)], (K, A, B) -> C?) -> Unit
+pub fn[A, B : Compare] Variable::from_map(Self[B], Self[A], (A) -> B) -> Unit
+pub fn[A, B : Compare] Variable::from_map_filtered(Self[B], Self[A], (A) -> B?) -> Unit
+pub fn[T] Variable::insert(Self[T], Relation[T]) -> Unit
+pub fn[T : Compare] Variable::insert_all(Self[T], Array[T]) -> Unit
+pub fn[T] Variable::is_stable(Self[T]) -> Bool
+pub fn[T] Variable::name(Self[T]) -> String
+pub fn[T] Variable::recent(Self[T]) -> Relation[T]
+pub fn[T] Variable::stats(Self[T]) -> VariableStats
+
+pub struct VariableStats {
+  name : String
+  stable : Int
+  recent : Int
+  pending : Int
+  batches : Int
+}
+
+// Type aliases
+
+// Traits
