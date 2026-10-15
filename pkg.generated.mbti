@@ -21,15 +21,27 @@ pub(all) enum JoinInput[T] {
   Static(Relation[T])
 }
 
+pub struct Leaper[P, V] {
+  // private fields
+}
+pub fn[P, V] Leaper::filter((P, V) -> Bool) -> Self[P, V]
+pub fn[P] Leaper::passthrough() -> Self[P, Unit]
+pub fn[P, V] Leaper::prefix_filter((P) -> Bool) -> Self[P, V]
+
 pub struct Relation[T] {
   // private fields
 }
 pub fn[T : Compare] Relation::Relation(Array[T]) -> Self[T]
 pub fn[T] Relation::as_input(Self[T]) -> JoinInput[T]
 pub fn[T : Compare] Relation::contains(Self[T], T) -> Bool
+pub fn[K : Compare, V : Compare, P] Relation::extend_anti(Self[(K, V)], (P) -> K) -> Leaper[P, V]
+pub fn[K : Compare, V : Compare, P] Relation::extend_with(Self[(K, V)], (P) -> K) -> Leaper[P, V]
+pub fn[T : Compare, P, V] Relation::filter_anti(Self[T], (P) -> T) -> Leaper[P, V]
+pub fn[T : Compare, P, V] Relation::filter_with(Self[T], (P) -> T) -> Leaper[P, V]
 pub fn[K : Compare, A, C : Compare] Relation::from_antijoin(Self[(K, A)], Self[K], (K, A) -> C) -> Self[C]
 pub fn[K : Compare, A, B, C : Compare] Relation::from_join(Self[(K, A)], Self[(K, B)], (K, A, B) -> C) -> Self[C]
 pub fn[K : Compare, A, B, C : Compare] Relation::from_join_filtered(Self[(K, A)], Self[(K, B)], (K, A, B) -> C?) -> Self[C]
+pub fn[P, V, O : Compare] Relation::from_leapjoin(Self[P], Array[Leaper[P, V]], (P, V) -> O) -> Self[O]
 pub fn[A, B : Compare] Relation::from_map(Self[A], (A) -> B) -> Self[B]
 pub fn[A, B : Compare] Relation::from_map_filtered(Self[A], (A) -> B?) -> Self[B]
 pub fn[T] Relation::is_empty(Self[T]) -> Bool
@@ -45,6 +57,7 @@ pub fn[T : Compare] Variable::complete(Self[T]) -> Relation[T]
 pub fn[K : Compare, A, C : Compare] Variable::from_antijoin(Self[C], Self[(K, A)], Relation[K], (K, A) -> C) -> Unit
 pub fn[K : Compare, A, B, C : Compare] Variable::from_join(Self[C], Self[(K, A)], JoinInput[(K, B)], (K, A, B) -> C) -> Unit
 pub fn[K : Compare, A, B, C : Compare] Variable::from_join_filtered(Self[C], Self[(K, A)], JoinInput[(K, B)], (K, A, B) -> C?) -> Unit
+pub fn[P, V, O : Compare] Variable::from_leapjoin(Self[O], Self[P], Array[Leaper[P, V]], (P, V) -> O) -> Unit
 pub fn[A, B : Compare] Variable::from_map(Self[B], Self[A], (A) -> B) -> Unit
 pub fn[A, B : Compare] Variable::from_map_filtered(Self[B], Self[A], (A) -> B?) -> Unit
 pub fn[T] Variable::insert(Self[T], Relation[T]) -> Unit
