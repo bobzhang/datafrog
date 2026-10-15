@@ -1,0 +1,13 @@
+{
+  "upstream": "edd7cfc0f5ad3b93ce5bbe6a17848db9376b13c0",
+  "seeds": 512,
+  "insertion_phases": 2,
+  "strategies": [
+    "dynamic join with resumed iteration",
+    "static join",
+    "leapjoin"
+  ],
+  "exact_comparisons": 3072,
+  "oracle": "independent Python graph search",
+  "status": "passed"
+}
