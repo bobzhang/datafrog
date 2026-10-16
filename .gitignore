@@ -3,3 +3,5 @@
 /.mooncakes/
 /target/
 /validation/rust/target/
+
+.DS_Store

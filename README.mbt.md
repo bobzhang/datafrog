@@ -31,6 +31,14 @@ test "transitive permissions" {
 }
 ```
 
+## Installation
+
+```sh
+moon add bobzhang/datafrog@0.1.0
+```
+
+[GitHub](https://github.com/bobzhang/datafrog) · [Mooncakes](https://mooncakes.io/docs/bobzhang/datafrog)
+
 ## Model and API
 
 `Relation(tuples)` sorts and deduplicates a copy of its input. Relations are
