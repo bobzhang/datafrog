@@ -2,7 +2,7 @@
 package "bobzhang/datafrog/validation/bridge"
 
 // Values
-pub fn evaluate(Int) -> String
+pub fn evaluate(Int32) -> String
 
 // Errors
 
