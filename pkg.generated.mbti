@@ -12,7 +12,7 @@ pub struct Iteration {
 pub fn Iteration::Iteration() -> Self
 pub fn Iteration::changed(Self) -> Bool
 pub fn Iteration::dispose(Self) -> Unit
-pub fn Iteration::round(Self) -> Int
+pub fn Iteration::round(Self) -> Int32
 pub fn Iteration::stats(Self) -> Array[VariableStats]
 pub fn[T : Compare] Iteration::variable(Self, String, distinct? : Bool) -> Variable[T]
 
@@ -45,7 +45,7 @@ pub fn[P, V, O : Compare] Relation::from_leapjoin(Self[P], Array[Leaper[P, V]], 
 pub fn[A, B : Compare] Relation::from_map(Self[A], (A) -> B) -> Self[B]
 pub fn[A, B : Compare] Relation::from_map_filtered(Self[A], (A) -> B?) -> Self[B]
 pub fn[T] Relation::is_empty(Self[T]) -> Bool
-pub fn[T] Relation::length(Self[T]) -> Int
+pub fn[T] Relation::length(Self[T]) -> Int32
 pub fn[T : Compare] Relation::merge(Self[T], Self[T]) -> Self[T]
 pub fn[T] Relation::to_array(Self[T]) -> Array[T]
 
@@ -69,10 +69,10 @@ pub fn[T] Variable::stats(Self[T]) -> VariableStats
 
 pub struct VariableStats {
   name : String
-  stable : Int
-  recent : Int
-  pending : Int
-  batches : Int
+  stable : Int32
+  recent : Int32
+  pending : Int32
+  batches : Int32
 }
 
 // Type aliases
